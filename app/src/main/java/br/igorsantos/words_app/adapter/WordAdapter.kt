@@ -12,13 +12,14 @@ import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import br.igorsantos.words_app.R
-import br.igorsantos.words_app.ui.DetailActivity
+import br.igorsantos.words_app.ui.WordListFragment
 
 /**
  * Created by IgorSantos on 7/20/2021.
  */
 class WordAdapter(
-    private val letterId: String, context: Context
+    private val letterId: String,
+    context: Context
 ) : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
 
     private val filteredWords: List<String>
@@ -55,7 +56,7 @@ class WordAdapter(
         holder.button.text = item
 
         holder.button.setOnClickListener {
-            val queryUrl:Uri = Uri.parse("${DetailActivity.SEARCH_PREFIX}${item}")
+            val queryUrl:Uri = Uri.parse("${WordListFragment.SEARCH_PREFIX}${item}")
             val intent = Intent(Intent.ACTION_VIEW, queryUrl)
             context.startActivity(intent)
         }
